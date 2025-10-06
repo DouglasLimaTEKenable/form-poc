@@ -139,6 +139,16 @@
                             href="https://www.arekibo.com/">Arekibo</a></p>
                     <script>
                         document.getElementById("year").innerHTML = new Date().getFullYear();
+
+                        window.addEventListener("message", function (event) {
+                          // Only accept messages from your Power Pages domain
+                          if (event.origin !== "https://poc-form.powerappsportals.com") return;
+                        
+                          if (event.data && event.data.type === "resize-iframe") {
+                            const iframe = document.querySelector('iframe[title="Embedded Power Pages Form"]');
+                            if (iframe) iframe.style.height = event.data.height + "px";
+                          }
+                        });
                     </script>
                 </div>
             </div>
@@ -148,3 +158,4 @@
 
 
 </html>
+
